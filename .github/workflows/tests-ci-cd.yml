@@ -6,20 +6,23 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: github-action
-      uses: nocturlab/upload-to-discord@master
+      uses: nocturlab/upload-to-discord@send-in-archive
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        ARCHIVE_NAME: release
       with:
         args: README.md
     - name: local action
       uses: ./
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        ARCHIVE_NAME: release
       with:
         args: README.md
     - name: github-action
       uses: nocturlab/upload-to-discord@master
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        ARCHIVE_NAME: release
       with:
         args: ./*
